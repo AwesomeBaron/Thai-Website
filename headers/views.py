@@ -13,3 +13,18 @@ def about(request):
     context = {}
     return render(request, template, context)
 
+
+def service(request):
+    template = 'headers/SERVICES.html'
+    context = {}
+    return render(request, template, context)
+
+def products(request):
+    template = 'headers/products.html'
+    context = {}
+    return render(request, template, context)
+
+def blog(request):
+    template = 'headers/blog.html'
+    context = {}
+    return render(request, template, context)
