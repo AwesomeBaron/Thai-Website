@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% block title %}<title>My Portfolio</title>{% endblock %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css"/>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css"/>
+	<link rel="stylesheet" href="{% static 'headers/css/style.css' %}" type="text/css"/>
+</head>
+<body>
+
+<div class="wrapper">
+
+	{% block header %}
+		<div class="header">
+				<div class="icons">
+					<ul>
+						<li><a href="{% url 'index' %}">HOME</a></li>
+						<li><a href="{% url 'about' %}">ABOUT</></li>
+						<li><a href="#">SERVICES</a></li>
+						<li><a href="#">PRODUCTS</a></li>
+						<li><a href="#">BLOG</a></li>
+					</ul>
+				</div>
+		</div>
+	{% endblock %}
+
+	{% block images %}
+		<div class="img1">
+			<div class="img2">
+				<img src="{% static 'headers/images/tai-logo.jpg' %} ">
+			</div>
+		</div>
+	 {% endblock %}
+
+	{% block content %}
+	<div class="container-fluid">
+		<div class="container">
+				<h2>WHO WE ARE</h2>
+
+			<strong>Thai Agro & Allied Industries</strong>
+			 exist to build a food secured
+
+			For purpose of high yield to encourage farmers, we provide quality and viable seeds. Most of our seeds are gotten from Seed Companies based in Thailand). The following seeds can be purchased:[/vc_column_text][/vc_column][/vc_row][vc_row][vc_column width="1/4"][vc_column_text]CU 999 (BIG SIZE), CU 986, CU 971, CU 102
+		<div class="images"	>
+			<div class="gallery">
+				<img src="{% static 'headers/images/cucucmber.jpg' alt='cu999' width='900px' height='500' %}">
+					<div class="desc">
+						Add a description of the image here
+					</div>
+			</div>
+
+			<div class="gallery">
+					  <a target="_blank" href="forest.jpg">
+						<img src="{% static 'headers/images/mummy.jpg' alt='Northern Lights' width='300px' height='200px' %}  ">
+					  </a>
+				<div class="desc">
+					Add a description of the image here
+				</div>
+			</div>
+
+			<div class="gallery">
+					  <a target="_blank" href="lights.jpg">
+						<img src="lights.jpg" alt="Northern Lights" width="300" height="200">
+					  </a>
+				<div class="desc">
+					Add a description of the image here
+				</div>
+			</div>
+
+			<div class="gallery">
+					  <a target="_blank" href="mountains.jpg">
+						<img src="mountains.jpg" alt="Mountains" width="300" height="200">
+					  </a>
+				<div class="desc">
+					Add a description of the image here
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	{% endblock %}
+
+	{% block footer %}
+		<div class="footer1">
+			<div class="location">
+				<h3>ADDRESS</h3>
+				<p>No 7 Mann Street<br>Opposite Sterling bank<br>Wethedral road, Owerri, Imo State</p>
+			</div>
+			<div class="contact">
+				<h3>CONTACT</h3>
+				<p>Email: Taiagro.ict@gmail.com<br>Twitter: @taiagro</p>
+			</div>
+		</div>
+	{% endblock %}
+
+
+
+</div>
+</body>
+</html>
