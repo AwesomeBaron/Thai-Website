@@ -23,8 +23,3 @@ def products(request):
     template = 'headers/products.html'
     context = {}
     return render(request, template, context)
-
-def blog(request):
-    template = 'headers/blog.html'
-    context = {}
-    return render(request, template, context)
