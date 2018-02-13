@@ -4,36 +4,45 @@
 
 <!-- Blog Post -->
 {% for post in obj %}
+
+{% if msg %}
+<ul class="messages">
+  {% for message in msg %}
+  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
 <div class="card mb-4">
-   <img class="card-img-top" src= {{ post.image.url}}   alt="Card image cap">
+   <img class="card-img-top" src= "{{ post.image.url}}" width="300px"  class="img-fluid" alt="Responsive image">
   <div class="card-body">
     <h2 class="card-title">{{ post.title}}</h2>
             <p class="card-text">{{ post.content }}</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            Posted on {{ post.pub_date|date:'F d'}}, {{ post.pub_date.year}} by <p>{{ post.author }}</p></a>
+            Posted on {{ post.pub_date|date:'F d'}}, {{ post.pub_date.year}} by <p>{{ post.author|title }}</p></a>
           </div>
         </div>
   {% endfor %}
       {% endblock %}
 
   {% block page %}
+  <nav aria-label="Page navigation example">
   {% if obj.has_other_pages %}
   <ul class="pagination justify-content-center mb-4">
     {% if obj.has_previous %}
       <li class="page-item">
-        <a class="page-link" href="?page={{ obj.previous_page_number }}">&larr; Older</a>
-        {% else %}
+        <a class="page-link" href="?page={{ obj.previous_page_number }}">&larr; Newer</a>
       {% endif %}
       </li>
       {% if obj.has_next %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ users.next_page_number }}">Newer &rarr;</a>
+      <li class="page-item-disabled">
+        <a class="page-link" href="?page={{ obj.next_page_number }}">Older &rarr;</a>
       </li>
-      {% else %}
-      
       {% endif %}
     </ul> 
     {% endif %}
+  </nav>
   {% endblock %}
+
+  

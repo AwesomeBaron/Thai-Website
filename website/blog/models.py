@@ -11,11 +11,11 @@ class Post(models.Model):
     title = models.CharField(max_length=25)
     content = models.TextField()
     pub_date = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to=upload_location)
+    image = models.ImageField(upload_to='media')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     
-    def get_absolute_uri(self):
-        return reverse('detail', kwargs={'post_id': self.pk})
+    def get_absolute_url(self):
+        return reverse('blog:detail', kwargs={'post_id': self.pk})
 
     def __str__(self):
         return 'titile is {}'.format(self.title)

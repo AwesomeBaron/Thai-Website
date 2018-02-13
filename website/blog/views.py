@@ -1,11 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages  as msg
 from django.http import Http404, HttpResponseRedirect
 from django.urls import reverse
-from django.views.decorators.http import require_POST, require_GET
+from django.views.decorators.http import require_POST
 from .models import Post
-from .forms import SeacrhPost
 from .forms import CreatePost
 # Create your views here.
 
@@ -23,34 +22,32 @@ def index(request):
     except EmptyPage:
         obj = paginator.page(paginator.num_pages)
 
+    return render(request, 'blog/index.html', {'obj': obj, 'user': user_list })
 
-    return render(request, 'blog/index.html', {'obj': obj})
-
-
-@require_POST
 def create_post(request):
-
     if not request.user.is_authenticated and not request.user.is_superuser:
-        return Http404
-
-    form = CreatePost(request.POST, request.FILES)
+        raise Http404
+        
     
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.author = request.user
-        instance.save()
-        msg.success(request, 'new post created')
+    if request.method == "POST":
+        form = CreatePost(request.POST, request.FILES)
+        
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
+            msg.success(request, 'new post created')
+            return redirect('blog:index')
     else:
         msg.error(request, 'failed to create post')
-
         form = CreatePost()
-
-    return render(request, 'create.html', {'form': form})
+        
+    return render(request, 'blog/create.html', {'form': form})
 
 
 def delete_post(request, post_id=None):
     if not request.user and not request.user.is_superuser:
-        return Http404
+        raise Http404
 
     post = get_object_or_404(Post, pk=post_id)
 
@@ -58,27 +55,32 @@ def delete_post(request, post_id=None):
 
     msg.success(request, 'Post succesfully deleted')
 
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('blog:index'))
 
-@require_POST
+
 def edit_post(request, post_id=None):
     if not request.user and not request.user.is_superuser:
-        return Http404
-    post = get_object_or_404(Post, pk=post_id)
-    form = CreatePost(request.Post, instance=post)
+        raise Http404
 
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.author = request.user
-        instance.save()
-        msg.success(request, 'Post was succefully edited')
-        return HttpResponseRedirect(instance.get_absolute_uri())
+    post_pk = get_object_or_404(Post, pk=post_id)
 
+    var = post_pk.id
+
+    if request.method == 'POST':
+        form = CreatePost(request.POST, instance=post_pk)
+        
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
+            msg.success(request, 'Post was succefully edited')
+            return HttpResponseRedirect(instance.get_absolute_url())
+        
     else:
         msg.error(request, 'Failed to edit post')
-        form = CreatePost(instance=post)
+        form = CreatePost(instance=post_pk)
 
-    return render(request, 'edit.html', {'form': form})
+    return render(request, 'blog/edit.html', {'form': form, 'post': var})
 
 def post_detail(request, post_id=None):
     instance = get_object_or_404(Post, pk=post_id)
@@ -87,5 +89,5 @@ def post_detail(request, post_id=None):
         'instance': instance
     }
 
-    return render(request, 'post_detail.html', context)
+    return render(request, 'blog/detail.html', context)
     
