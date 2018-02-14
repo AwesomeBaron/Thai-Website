@@ -18,4 +18,4 @@ class Post(models.Model):
         return reverse('blog:detail', kwargs={'post_id': self.pk})
 
     def __str__(self):
-        return 'titile is {}'.format(self.title)
+        return '{}'.format(self.title)

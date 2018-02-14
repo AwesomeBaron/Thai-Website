@@ -85,8 +85,11 @@ def edit_post(request, post_id=None):
 def post_detail(request, post_id=None):
     instance = get_object_or_404(Post, pk=post_id)
 
+    var = request.build_absolute_uri()
+
     context = {
-        'instance': instance
+        'instance': instance,
+        'var': var
     }
 
     return render(request, 'blog/detail.html', context)

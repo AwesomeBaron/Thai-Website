@@ -55,10 +55,15 @@
       </div>
     </nav>
 
+
     <!-- Page Content -->
     <div class="container">
 
+
       <div class="row">
+
+          {% block body %}
+          {% endblock %}
 
         <!-- Blog Entries Column -->
         <div class="col-md-8">
@@ -101,7 +106,13 @@
 
           <div class="card my-5">
             <div class='card-header'>
+              {% if request.user.is_authenticated and request.user.is_superuser %}
               <p><strong>Click here to <a href="{% url 'blog:create' %}">create</a> new post</strong></p>
+              {% else %}
+              <h5><span style="color:red">Only for site admins</span
+                ></h5><p><strong>
+                  Click here to <a href="{% url 'admin:login' %}">Login</a> to create new post</strong></p>
+              {% endif %}
             </div>
           </div>
 

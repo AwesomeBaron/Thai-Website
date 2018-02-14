@@ -7,14 +7,19 @@
 {{ instance.content }}
 {{ instance.author }}
 <p><img src="{{ instance.image.url }}" width="300px"></p>
-<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+<div class="fb-like" data-href="{{ var }}" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 <br>
 <br>
+{% if request.user.authenticated and request.user.is_superuser %}
 <a href="{% url 'blog:edit' post_id=instance.id %}"><button type="button" class="btn btn-primary btn-sm" ></span>Edit Post</button></a>
 <a href="{% url 'blog:delete' post_id=instance.id %}"><button type="button" class="btn btn-primary btn-sm">Delete Post</button></a>
 <a href="{% url 'blog:index' %}"><button type="button" class="btn btn-primary btn-sm">Home</button></a>
-
+{% else %}
+<a href="{% url 'blog:edit' post_id=instance.id %}"><button type="button" class="btn btn-primary btn-sm" disabled ></span>Edit Post</button></a>
+<a href="{% url 'blog:delete' post_id=instance.id %}"><button type="button" class="btn btn-primary btn-sm" disabled >Delete Post</button></a>
+<a href="{% url 'blog:index' %}"><button type="button" class="btn btn-primary btn-sm">Home</button></a>
+{% endif %}
 <br>
 <br>
-<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="50" data-numposts="5"></div>
+<div class="fb-comments" data-href="{{ var }}" data-numposts="5"></div>
 {% endblock %}
