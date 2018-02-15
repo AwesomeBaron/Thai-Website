@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block detail %}
+
+{{ instance.title }}
+<br>
+{{ instance.content }}
+{{ instance.author }}
+<p><img src="{{ instance.image.url }}" width="300px"></p>
+<div class="fb-like" data-href="{{ var }}" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+<br>
+<br>
+{% if request.user.authenticated and request.user.is_superuser %}
+<a href="{% url 'blog:edit' post_id=instance.id %}"><button type="button" class="btn btn-primary btn-sm" ></span>Edit Post</button></a>
+<a href="{% url 'blog:delete' post_id=instance.id %}"><button type="button" class="btn btn-primary btn-sm">Delete Post</button></a>
+<a href="{% url 'blog:index' %}"><button type="button" class="btn btn-primary btn-sm">Home</button></a>
+{% else %}
+<a href="{% url 'blog:edit' post_id=instance.id %}"><button type="button" class="btn btn-primary btn-sm" disabled ></span>Edit Post</button></a>
+<a href="{% url 'blog:delete' post_id=instance.id %}"><button type="button" class="btn btn-primary btn-sm" disabled >Delete Post</button></a>
+<a href="{% url 'blog:index' %}"><button type="button" class="btn btn-primary btn-sm">Home</button></a>
+{% endif %}
+<br>
+<br>
+<div class="fb-comments" data-href="{{ var }}" data-numposts="5"></div>
+{% endblock %}
