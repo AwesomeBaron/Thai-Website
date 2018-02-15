@@ -1,1 +1,51 @@
 {% extends "headers/index.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+<div class="container-fluid">
+        <div class="content">
+            <div class="empty"></div>
+
+            <p>
+                From our partnership with our foreign agricultural organisations, we have been able to make some of their products and technologies available
+                (for sale) in our office here (in Nigeria).
+                For purpose of high yield to encourage farmers, we provide quality and viable seeds. Most of our seeds are gotten from Seed Companies based in
+                Thailand). The following seeds can be purchased:
+                <strong>Some of these products include:</strong>
+            </p>
+            <h2>OUR PRODUCTS</h2>
+            <div class="images"	>
+                <div class="gallery">
+                    <a target="_blank" href="seeds.jpg">
+                        <img src="{% static 'headers/images/driptape.jpg' alt='cu999' %}">
+                    </a>
+                        <div class="desc">
+                            For your irrigation, you can get your quality and effective dripTape for irrigation from us
+                            with 1 year warranty.
+                        </div>
+                </div>
+
+                <div class="gallery">
+                          <a target="_blank" href="fmummy.jpg">
+                            <img src="{% static 'headers/images/TPI.jpg' alt='CEO' %} ">
+                          </a>
+                    <div class="desc">
+                        Being Organic oriented, we offer different organic products that will help you
+                        prevent or combant pest attack.
+                    </div>
+                </div>
+
+                <div class="gallery">
+                          <a target="_blank" href="sumpix.jpg">
+                            <img src="{% static 'headers/images/sed2.jpg' alt='2017 summit' %}  ">
+                          </a>
+                    <div class="desc">
+                          we have different varieties of seeds, ranging from Cucumber, Watermelon,
+                        Tomato, Brocolli, Sweetcorn, Pepper, Green beans.
+                    </div>
+                </div>
+		</div>
+        </div>
+</div>
+{% endblock %}
