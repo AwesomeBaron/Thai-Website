@@ -5,10 +5,11 @@ margin:0px;
 .wrapper{
 width:100%;
 height:100%;
-background-color;white;
-}
-html, body{
-height:100%;
+background-color:white;
+line-height: 30px;
+font-size:20px;
+font-family: Cambria, Verdana
+text-align: justify;
 }
 .header{
 	width:100%;
@@ -36,39 +37,29 @@ li a{
 	text-align: center;
 	font-family: cambrain;
 	font-size: 16px;
-	text-decoration: none
+	text-decoration: none;
 }
 li a:hover, li a:focus {
 	background-color: #ccc;
 	color:white;
 	text-decoration:none
 }
-@medi screen and (max-width:1060px){
-.icons{
-	width:800px;
-	height: 80px;
-}
-.icons li{
-	width:150px;}
-}
 h2{
 text-align:Center;
 font-weight:bold;
 padding-top:30px;
+color:red;
+}
+h3{
+font-weight:bold;
+color:red;
 }
 .content{
 height:auto;
 width:60%;
 margin:auto;
 }
-.contact{
-float:right;
-width:500px;
-}
-.location{
-float:right;
-width:500px;
-}
+
 .img1{
 height:auto;
 width:80%;
@@ -79,32 +70,39 @@ padding-top:40px;
 .img2{
 width:30%;
 height:auto;
-margin: auto
-}
-.footer1{
-height:300px;
-width:100%;
-background-color:brown;
-}
-.content2{
-width:80%;
-margin:auto;
+margin: auto;
 }
 
 .gallery {
-    margin: 5px;
+    margin: 10px;
     border: 1px solid #ccc;
     float: left;
-    width: 180px;
+    width: 30%;
+}
+.gallery1 {
+    margin: 10px;
+    border: 1px solid #ccc;
+    width: 30%;
+}
+.gallery1 img{
+width:100%
 }
 
-.gallery:hover {
+
+.gallery a{
+    height: 300px;
+    overflow: hidden;
+}
+
+.gallery:hover{
     border: 1px solid #777;
 }
 
 .gallery img {
     width: 100%;
-    height: auto;
+}
+.empty{
+    height:40px;
 }
 
 .desc {
@@ -112,4 +110,51 @@ margin:auto;
     text-align: center;
 }
 
+.footer1{
+height:300px;
+width:100%;
+background-color:black;
+color:white;
+}
 
+.footerwidth{
+    width:80%;
+    height:auto;
+    margin:auto;
+    background-color:black;
+    line-height: 30px;
+}
+.contact{
+float:left;
+width:40%;
+padding: 40px 10px 0px 60px;
+}
+.location{
+float:left;
+padding:40px 5px 0px 170px
+}
+
+@keyframes slidy {
+0% { left: 0%; }
+20% { left: 0%; }
+25% { left: -100%; }
+45% { left: -100%; }
+50% { left: -200%; }
+70% { left: -200%; }
+75% { left: -300%; }
+95% { left: -300%; }
+100% { left: -400%; }
+}
+
+
+div#slider { overflow: hidden; }
+div#slider figure img { width: 20%; float: left;height:700px; }
+div#slider figure {
+  position: relative;
+  width: 500%;
+  margin: 0;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  animation: 30s slidy infinite;
+}
