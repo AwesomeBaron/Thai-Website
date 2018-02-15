@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	{% block title %}<title>My Portfolio</title>{% endblock %}
+	{% block title %}<title>THAI-AGRO & ALLIED INDUSTRIES</title>{% endblock %}
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css"/>
-	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'headers/css/bootstrap.min.css' %}" type="text/css"/>
+	<link rel="stylesheet" href="{% static 'headers/css/bootstrap.css' %}" type="text/css"/>
 	<link rel="stylesheet" href="{% static 'headers/css/style.css' %}" type="text/css"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
@@ -19,64 +19,79 @@
 				<div class="icons">
 					<ul>
 						<li><a href="{% url 'index' %}">HOME</a></li>
-						<li><a href="{% url 'about' %}">ABOUT</></li>
+						<li><a href="{% url 'about' %}">ABOUT</a></li>
 						<li><a href="{% url 'service' %}">SERVICES</a></li>
 						<li><a href="{% url 'products' %}">PRODUCTS</a></li>
-						<li><a href="{% url 'blog' %}">BLOG</a></li>
+						<li><a href="#">BLOG</a></li>
 					</ul>
 				</div>
 		</div>
 	{% endblock %}
 
-	{% block images %}
+
+	{% block content %}
+
+
+	{% block slider %}
+	<div id="slider">
+		<figure>
+			<img src="{% static 'headers/images/mummy.jpg' alt='2017 summit' %}  "/>
+			<img src="{% static 'headers/images/DSC01707.JPG' alt='2017 summit' %}  ">
+			<img src="{% static 'headers/images/DSC01755.JPG' alt='2017 summit' %}  ">
+			<img src="{% static 'headers/images/farm.png' alt='2017 summit' %}  ">
+			<img src="{% static 'headers/images/sumpix.JPG' alt='2017 summit' %}  ">
+
+		</figure>
+	</div>
+	{% endblock %}
 		<div class="img1">
 			<div class="img2">
 				<img src="{% static 'headers/images/tai-logo.jpg' %} ">
 			</div>
 		</div>
-	 {% endblock %}
 
-	{% block content %}
 	<div class="container-fluid">
-		<div class="container">
+		<div class="content">
 				<h2>WHO WE ARE</h2>
 
 			<strong>Thai Agro & Allied Industries</strong>
-			 exist to build a food secured
+			 is organic oriented Agricultural Enterprise that has over the years raised awareness on the importance of agriculture in Nigeria and and empowered
+			individuals, Churches, Co-operate entities and various government agencies with the neccessary skill to turn agriculture into a profitable
+			venture and also be able to provide food for families.
 
-			For purpose of high yield to encourage farmers, we provide quality and viable seeds. Most of our seeds are gotten from Seed Companies based in Thailand). The following seeds can be purchased:[/vc_column_text][/vc_column][/vc_row][vc_row][vc_column width="1/4"][vc_column_text]CU 999 (BIG SIZE), CU 986, CU 971, CU 102
+			<h2>OUR PURPOSE OF EXISTING</h2>
+			<p>Our purpose is solidly ingrained in our mission and vision statements<br>
+			<strong>MISSION</strong> We exist to build a food secured Nigeria/African through setting up farm, supporting and training local farmers with
+			modern technology in partnership with Thai-Land</p>
+			<strong>OUR VISION</strong> is to turn our fallow lands in Nigeria/African into bread, unlocking its treasures
+
+
+
 		<div class="images"	>
 			<div class="gallery">
-				<img src="{% static 'headers/images/cucucmber.jpg' alt='cu999' width='900px' height='500' %}">
+				<a target="_blank" href="fmummy.jpg">
+					<img src="{% static 'headers/images/cucucmber.jpg' alt='cu999' %}">
+				</a>
 					<div class="desc">
-						Add a description of the image here
+						Sample fruits of one of our products.
 					</div>
 			</div>
 
 			<div class="gallery">
-					  <a target="_blank" href="forest.jpg">
-						<img src="{% static 'headers/images/mummy.jpg' alt='Northern Lights' width='300px' height='200px' %}  ">
+					  <a target="_blank" href="fmummy.jpg">
+						<img src="{% static 'headers/images/CATOL 092.JPG' alt='CEO' %}  ">
 					  </a>
 				<div class="desc">
-					Add a description of the image here
+					CEO Thai-Agro & Allied Industries on one of the numerous trainings we organise frequently
 				</div>
 			</div>
 
 			<div class="gallery">
-					  <a target="_blank" href="lights.jpg">
-						<img src="lights.jpg" alt="Northern Lights" width="300" height="200">
+					  <a target="_blank" href="sumpix.jpg">
+						<img src="{% static 'headers/images/DSC02274.JPG' alt='2017 summit' %}  ">
 					  </a>
 				<div class="desc">
-					Add a description of the image here
-				</div>
-			</div>
-
-			<div class="gallery">
-					  <a target="_blank" href="mountains.jpg">
-						<img src="mountains.jpg" alt="Mountains" width="300" height="200">
-					  </a>
-				<div class="desc">
-					Add a description of the image here
+					Mulching film.
 				</div>
 			</div>
 		</div>
@@ -89,7 +104,7 @@
 			<div class="footerwidth">
 				<div class="location">
 					<h3>ADDRESS:</h3>
-					<p>No 7 Mann Street,<br>Opposite Sterling bank,<br>Wethedral road Owerri, Imo State.</p>
+					<p>No 7 Mann Street,<br>Opposite Sterling bank, Wethedral road Owerri, Imo State.</p>
 				</div>
 				<div class="contact">
 					<h3>CONTACT</h3>
